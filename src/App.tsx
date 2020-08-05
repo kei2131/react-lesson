@@ -2,25 +2,32 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+type Item = {
+  id: number
+  title: string
+}
+
+const items: Item[] = [
+  {
+    id: 1,
+    title: "キズぐすり"
+  },
+  {
+    id: 2,
+    title: "いいキズぐすり"
+  }
+]
+
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>
+        { items.map((item: Item) => (
+          <li key={item.id}>{ item.title }</li>
+        )) }
+      </ul>
     </div>
-  );
+  )
 }
 
 export default App;
