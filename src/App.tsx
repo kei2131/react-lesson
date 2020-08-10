@@ -1,31 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-type Item = {
-  id: number
-  title: string
-}
-
-const items: Item[] = [
-  {
-    id: 1,
-    title: "キズぐすり"
-  },
-  {
-    id: 2,
-    title: "いいキズぐすり"
-  }
-]
+import React, { useState, useCallback } from 'react';
+import { ToDoList } from './components/TodoList'
 
 const App: React.FC = () => {
+  const [ count, setCount ] = useState<number>(0)
+
+  const handleIncrement = useCallback(() => {
+    setCount(prev => prev + 1)
+  }, [])
+
+  const handleDecrement = useCallback(() => {
+    setCount(prev => prev - 1)
+  }, [])
+
   return (
     <div className="App">
-      <ul>
-        { items.map((item: Item) => (
-          <li key={item.id}>{ item.title }</li>
-        )) }
-      </ul>
+      <ToDoList />
     </div>
   )
 }
